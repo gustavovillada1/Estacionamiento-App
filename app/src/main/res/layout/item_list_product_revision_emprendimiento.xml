@@ -39,30 +39,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_product_revision_name_top"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:maxLines="2"
-                        android:text="TextView"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/text_product_revision_description_top"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:maxLines="2"
-                        android:text="TextView"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/text_product_revision_price"
+                        android:id="@+id/text_product_revision_name_emprendimiento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Price"
+                        android:text="modification.nameEmprendimiento"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -85,10 +66,29 @@
                             android:layout_marginEnd="10dp"
                             android:text="Tipo: " />
 
+                        <ImageView
+                            android:id="@+id/ic_add_modification"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+                        <ImageView
+                            android:id="@+id/ic_remove_modification"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/ic_remove_red" />
+
+                        <ImageView
+                            android:id="@+id/ic_edit_modification"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/ic_edit" />
+
                         <TextView
                             android:id="@+id/text_product_revision_type"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="Modificar"
                             android:textStyle="bold" />
@@ -138,53 +138,22 @@
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:cardCornerRadius="10dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="20dp"
+                    app:cardCornerRadius="100dp"
                     app:cardElevation="5dp">
 
-                    <RelativeLayout
-                        android:id="@+id/layout_product_revision_not_available"
+                    <ImageView
+                        android:id="@+id/image_product_revision_photo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#94B3A0A0"
-                        android:elevation="10dp">
-
-                        <TextView
-                            android:id="@+id/textView24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="0dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:gravity="center"
-                            android:text="No disponible" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/image_product_revision_photo"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="0dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:scaleType="centerCrop"
-                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-                    </RelativeLayout>
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:scaleType="centerCrop"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 </androidx.cardview.widget.CardView>
 

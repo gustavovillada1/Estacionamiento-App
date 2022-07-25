@@ -36,29 +36,17 @@ class ProductRevisionEmprendimientoAdapter: RecyclerView.Adapter<ProductRevision
         val modificationN = productsList[position]
 
         holder.text_product_revision_price.text = modificationN.nameEmprendimiento
-        Glide.with(holder.itemView.context).load(modificationN.photoProduct)
+        Glide.with(holder.itemView.context).load(modificationN.photoEmprendimiento)
             .into(holder.image_product_revision_photo)
 
-        holder.text_product_revision_description_top.text = modificationN.description
-        holder.text_product_revision_name_top.text = modificationN.name
-
-        if (modificationN.isAvailable) {
-            holder.layout_product_revision_not_available.visibility = View.GONE
-        }
-
-        if(modificationN.typeModification==Modification.MODIFICATION_TYPE_ADD_PRODUCT){
-            holder.text_product_revision_type.text="Agregar"
-        }else if(modificationN.typeModification==Modification.MODIFICATION_TYPE_MODIFIED_PRODUCT){
-            holder.text_product_revision_type.text="Editar"
-        }else if(modificationN.typeModification==Modification.MODIFICATION_TYPE_REMOVE_PRODUCT){
-            holder.text_product_revision_type.text="Eliminar"
-        }
-
         holder.apply {
-            text_product_revision_type
             ic_acepted_item_list.visibility=View.GONE
             ic_in_revision_item_list.visibility=View.GONE
             ic_rechaced_item_list.visibility=View.GONE
+            ic_add_modification.visibility=View.GONE
+            ic_edit_modification.visibility=View.GONE
+            ic_remove_modification.visibility=View.GONE
+
         }
 
         holder.card_product_revision_emprendimiento.setOnClickListener {
@@ -67,6 +55,19 @@ class ProductRevisionEmprendimientoAdapter: RecyclerView.Adapter<ProductRevision
             }
             holder.itemView.context.startActivity(openModification)
         }
+
+        if(modificationN.typeModification==Modification.MODIFICATION_TYPE_ADD_PRODUCT){
+            holder.ic_add_modification.visibility=View.VISIBLE
+            holder.text_product_revision_type.text="Agregar"
+        }else if(modificationN.typeModification==Modification.MODIFICATION_TYPE_MODIFIED_PRODUCT){
+            holder.ic_edit_modification.visibility=View.VISIBLE
+            holder.text_product_revision_type.text="Editar"
+        }else if(modificationN.typeModification==Modification.MODIFICATION_TYPE_REMOVE_PRODUCT){
+            holder.ic_remove_modification.visibility=View.VISIBLE
+            holder.text_product_revision_type.text="Eliminar"
+        }
+
+
 
         if(modificationN.stateModification==Modification.MODIFICATION_STATE_WAITING){
             holder.ic_in_revision_item_list.visibility=View.VISIBLE
