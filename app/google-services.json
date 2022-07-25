@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "966954833629",
+    "project_id": "icesistapp-d7c33",
+    "storage_bucket": "icesistapp-d7c33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966954833629:android:5cb11f65b22fc92db52d34",
+        "android_client_info": {
+          "package_name": "com.gustavovillada.icesistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSfos8yKX-lGQAZU4MV4KDqXlLV6PyUwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966954833629:android:c7589bc94903ee50b52d34",
+        "android_client_info": {
+          "package_name": "com.gustavovillada.icesistappemprendedores"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSfos8yKX-lGQAZU4MV4KDqXlLV6PyUwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966954833629:android:3243b24ee89cfeb5b52d34",
+        "android_client_info": {
+          "package_name": "com.gustavovillada.icesistappsoma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSfos8yKX-lGQAZU4MV4KDqXlLV6PyUwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966954833629-qqjptctfcoigvrc09gh61pdd2n05tvj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
