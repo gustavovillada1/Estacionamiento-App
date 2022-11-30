@@ -1,4 +1,4 @@
-package com.gustavovillada.icesistappsoma
+package com.gustavovillada.estacionamiento
 
 import org.junit.Test
 

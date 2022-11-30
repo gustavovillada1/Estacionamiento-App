@@ -1,16 +1,10 @@
-package com.gustavovillada.icesistappsoma.viewModel
+package com.gustavovillada.estacionamiento.viewModel
 
-import android.content.ContentValues.TAG
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.gustavovillada.icesistappsoma.MainActivity
 
 
 class LoginActivityViewModel: ViewModel() {

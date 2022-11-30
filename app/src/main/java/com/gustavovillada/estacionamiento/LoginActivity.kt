@@ -1,4 +1,4 @@
-package com.gustavovillada.icesistappsoma
+package com.gustavovillada.estacionamiento
 
 import android.app.Dialog
 import android.content.Intent
@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import com.gustavovillada.icesistappsoma.databinding.ActivityLoginBinding
-import com.gustavovillada.icesistappsoma.viewModel.LoginActivityViewModel
+import com.gustavovillada.estacionamiento.databinding.ActivityLoginBinding
+import com.gustavovillada.estacionamiento.viewModel.LoginActivityViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -56,13 +56,19 @@ class LoginActivity : AppCompatActivity() {
         loadingDialog.setContentView(R.layout.dialog_loading)
         loadingDialog.show()
 
+        loadingDialog.dismiss()
+
+        finish()
+        val openAplication= Intent(this, MainActivity::class.java)
+        startActivity(openAplication)
+        /*
         if(isOkInputs()){
             val email=binding.inputEmailLogin.text.toString()
             val password=binding.inputPasswordLogin.text.toString()
             loginActivityViewModel.sigInWithEmail(email,password)
         }else{
             loadingDialog.dismiss()
-        }
+        }*/
 
     }
 

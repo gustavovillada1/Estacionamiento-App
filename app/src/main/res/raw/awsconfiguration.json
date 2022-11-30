@@ -1,0 +1,1 @@
+{ "Version": "0.1.0", "IdentityManager": { "Default": {} }, "CredentialsProvider": { "CognitoIdentity": { "Default": { "PoolId": "us-east-1:6d899167-ea01-47c9-831c-8c499a4db058", "Region": "us-east-1" } } }, "CognitoUserPool": { "Default": { "AppClientId": "gustavo", "PoolId": "us-east-1_gustavo", "Region": "us-east-1" } } }

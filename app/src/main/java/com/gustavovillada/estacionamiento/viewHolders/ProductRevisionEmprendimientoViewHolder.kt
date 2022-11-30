@@ -1,10 +1,10 @@
-package com.gustavovillada.icesistappsoma.viewHolders
+package com.gustavovillada.estacionamiento.viewHolders
 
 import android.view.View
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.gustavovillada.icesistappsoma.R
+import com.gustavovillada.estacionamiento.R
 
 class ProductRevisionEmprendimientoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card_product_revision_emprendimiento: CardView = itemView.findViewById(R.id.card_product_revision_emprendimiento)

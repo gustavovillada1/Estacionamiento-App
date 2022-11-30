@@ -10,8 +10,9 @@
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.17777777777777778" />
         <entry key="app/src/main/res/layout/activity_add_emprendimiento.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16897506925207756" />
         <entry key="app/src/main/res/layout/activity_modification.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_parking.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/fragment_emprendimientos.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.335" />
