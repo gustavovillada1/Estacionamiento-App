@@ -8,13 +8,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.gustavovillada.estacionamiento.databinding.ActivityLoginBinding
-import com.gustavovillada.estacionamiento.viewModel.LoginActivityViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    private val loginActivityViewModel: LoginActivityViewModel by viewModels()
     private lateinit var loadingDialog :Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,31 +20,11 @@ class LoginActivity : AppCompatActivity() {
         binding =  ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadingDialog = Dialog(this)
-        observerLogIn()
         binding.btnLoginLogIn.setOnClickListener {
             login()
         }
     }
 
-    /**
-     * Método encargado de observar el comportamiento del inicio de sesión de firebase desde el viewModel
-     */
-    private fun observerLogIn(){
-        loginActivityViewModel.isSigned.observe(this, Observer {
-            isLogIn->
-            if (isLogIn){
-                loadingDialog.dismiss()
-
-                finish()
-                val openAplication= Intent(this, MainActivity::class.java)
-                startActivity(openAplication)
-            }else{
-
-                loadingDialog.dismiss()
-                Toast.makeText(this,"Ha ocurrido un error al iniciar sesión", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     /**
      * Método encargado de mostrar el loading y de llamar al viewModel para iniciar sesión.
