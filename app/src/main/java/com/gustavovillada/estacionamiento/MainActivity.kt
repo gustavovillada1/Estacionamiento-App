@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     // --- Constants to modify per your configuration ---
     // Customer specific IoT endpoint
     // AWS Iot CLI describe-endpoint call returns: XXXXXXXXXX.iot.<region>.amazonaws.com,
-    private val CUSTOMER_SPECIFIC_ENDPOINT = "CHANGE_ME"
+    private val CUSTOMER_SPECIFIC_ENDPOINT = "aeje13w1sb5pn-ats.iot.us-east-1.amazonaws.com"
 
     // Cognito pool ID. For this app, pool needs to be unauthenticated pool with
     // AWS IoT permissions.
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(openZona)
         }
 
-        clientId = UUID.randomUUID().toString()
+        clientId = ""
 
         // Initialize the AWS Cognito credentials provider
         credentialsProvider = CognitoCachingCredentialsProvider(
