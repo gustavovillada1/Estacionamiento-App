@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     // Cognito pool ID. For this app, pool needs to be unauthenticated pool with
     // AWS IoT permissions.
-    private val COGNITO_POOL_ID = "us-east-1:6d899167-ea01-47c9-831c-8c499a4db058"
+    private val COGNITO_POOL_ID = "us-east-1:71ac10cd-9d2b-4e40-ab31-72cfb9b5d8f3"
 
     // Region of AWS IoT
     private val MY_REGION: Regions = Regions.US_EAST_1
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         // MQTT Client
-       // mqttManager = AWSIotMqttManager(clientId, CUSTOMER_SPECIFIC_ENDPOINT)
+        mqttManager = AWSIotMqttManager(clientId, CUSTOMER_SPECIFIC_ENDPOINT)
 
         connect()
 
