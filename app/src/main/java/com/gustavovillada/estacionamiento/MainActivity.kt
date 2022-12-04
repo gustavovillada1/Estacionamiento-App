@@ -1,32 +1,21 @@
 package com.gustavovillada.estacionamiento
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.PackageManagerCompat
+import com.amazonaws.auth.CognitoCachingCredentialsProvider
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback.AWSIotMqttClientStatus
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos
+import com.amazonaws.regions.Regions
 import com.gustavovillada.estacionamiento.databinding.ActivityMainBinding
 import com.gustavovillada.estacionamiento.model.Zona
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager
-
-import com.amazonaws.auth.CognitoCachingCredentialsProvider
-import com.amazonaws.regions.Regions
-import java.util.*
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback.AWSIotMqttClientStatus
-
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback
-import java.lang.Exception
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttNewMessageCallback
-
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos
 import java.io.UnsupportedEncodingException
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import java.nio.charset.Charset
 
 
@@ -58,6 +47,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val SDK_INT = Build.VERSION.SDK_INT
+        if (SDK_INT > 8) {
+            val policy = ThreadPolicy.Builder()
+                .permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -70,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(openZona)
         }
 
-        clientId = ""
+        clientId = "Manuel"
 
         // Initialize the AWS Cognito credentials provider
         credentialsProvider = CognitoCachingCredentialsProvider(
