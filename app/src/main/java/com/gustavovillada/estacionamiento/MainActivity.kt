@@ -1,6 +1,7 @@
 package com.gustavovillada.estacionamiento
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
@@ -8,6 +9,7 @@ import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import com.amazonaws.auth.CognitoCachingCredentialsProvider
 import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback.AWSIotMqttClientStatus
 import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager
@@ -22,7 +24,8 @@ import java.nio.charset.Charset
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var zona: Zona
+    private lateinit var zona1: Zona
+    var disponibles = MutableLiveData<Int>()
 
 
     // --- Constants to modify per your configuration ---
@@ -57,11 +60,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        zona = Zona("Zona 1",30,20,"Llegar al edificio G")
+        zona1 = Zona("Zona 1",30,20,"Llegar al edificio G")
 
+        updateZona1UI(zona1)
         binding.btnZona1.setOnClickListener{
             var openZona= Intent(this,ParkingActivity::class.java)
-            openZona.putExtra("zona",zona)
+            openZona.putExtra("zona",zona1)
             startActivity(openZona)
         }
 
@@ -89,21 +93,20 @@ class MainActivity : AppCompatActivity() {
                 Log.d("LOG_TAG", "Status = $status")
                 runOnUiThread {
                     if (status == AWSIotMqttClientStatus.Connecting) {
-                        binding.tvStatus.visibility= View.VISIBLE
+                        binding.linearStatus.setBackgroundColor(Color.GREEN)
                         binding.tvStatus.setText("Connecting...")
                     } else if (status == AWSIotMqttClientStatus.Connected) {
-                        binding.tvStatus.visibility= View.GONE
+                        binding.linearStatus.setBackgroundColor(Color.GREEN)
                         binding.tvStatus.setText("Connected")
                         subscribe()
                     } else if (status == AWSIotMqttClientStatus.Reconnecting) {
-                        binding.tvStatus.visibility= View.VISIBLE
-
+                        binding.linearStatus.setBackgroundColor(Color.RED)
                         if (throwable != null) {
                             Log.e("LOG_TAG", "Connection error.", throwable)
                         }
                         binding.tvStatus.setText("Reconnecting")
                     } else if (status == AWSIotMqttClientStatus.ConnectionLost) {
-                        binding.tvStatus.visibility= View.VISIBLE
+                        binding.linearStatus.setBackgroundColor(Color.RED)
 
                         if (throwable != null) {
                             Log.e("LOG_TAG", "Connection error.", throwable)
@@ -112,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                         binding.tvStatus.setText("Disconnected")
 
                     } else {
-                        binding.tvStatus.visibility= View.VISIBLE
+                        binding.linearStatus.setBackgroundColor(Color.RED)
 
                         binding.tvStatus.setText("Disconnected")
                     }
@@ -125,8 +128,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun subscribe(){
-
-
         val topic = "parqueadero/zonas/zona_1"
 
         Log.d("LOG_TAG", "topic = $topic")
@@ -141,6 +142,8 @@ class MainActivity : AppCompatActivity() {
                         Log.d("LOG_TAG", "Message arrived:")
                         Log.d("LOG_TAG", "   Topic: $topic")
                         Log.d("LOG_TAG", " Message: $message")
+
+                        calculateParkingsAvailable(Integer.parseInt(message))
                         //tvLastMessage.setText(message)
                     } catch (e: UnsupportedEncodingException) {
                         Log.e("LOG_TAG", "Message encoding error.", e)
@@ -150,6 +153,25 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("LOG_TAG", "Subscription error.", e)
         }
+    }
+
+    private fun calculateParkingsAvailable(code: Int){
+        if(code==0){
+            zona1.ocupation=zona1.ocupation-1
+        }else{
+            zona1.ocupation=zona1.ocupation+1
+        }
+
+        //disponibles.value=zona1.capacity-zona1.ocupation
+        updateZona1UI(zona1)
+    }
+
+    private fun updateZona1UI(zona1: Zona){
+        binding.tvTitleZona1.text=zona1.name
+
+        val availables=zona1.capacity-zona1.ocupation
+        binding.tvTotalZona1.text="Capacidad ${zona1.capacity}"
+        binding.tvDisponiblesZona1.text="${availables} disponibles"
     }
 
     private fun publish(){
@@ -170,6 +192,12 @@ class MainActivity : AppCompatActivity() {
             Log.e("LOG_TAG", "Disconnect error.", e)
         }
 
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disconnect()
     }
 
 

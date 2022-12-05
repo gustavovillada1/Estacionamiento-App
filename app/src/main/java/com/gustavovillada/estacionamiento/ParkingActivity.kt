@@ -17,6 +17,8 @@ class ParkingActivity : AppCompatActivity() {
         binding = ActivityParkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         zona= intent.getSerializableExtra("zona") as Zona
 
         zona?.let {

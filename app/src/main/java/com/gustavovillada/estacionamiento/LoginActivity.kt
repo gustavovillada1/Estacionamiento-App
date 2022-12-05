@@ -39,30 +39,8 @@ class LoginActivity : AppCompatActivity() {
         finish()
         val openAplication= Intent(this, MainActivity::class.java)
         startActivity(openAplication)
-        /*
-        if(isOkInputs()){
-            val email=binding.inputEmailLogin.text.toString()
-            val password=binding.inputPasswordLogin.text.toString()
-            loginActivityViewModel.sigInWithEmail(email,password)
-        }else{
-            loadingDialog.dismiss()
-        }*/
+
 
     }
 
-    /**
-     * Método encargado de verificar que la contraseña y el correo electrónico sean válidos.
-     */
-    private fun isOkInputs(): Boolean {
-        if (binding.inputEmailLogin.text.toString().length<3){
-            Toast.makeText(this,"Escribe un email válido", Toast.LENGTH_SHORT).show()
-
-            return false
-        }else if(binding.inputPasswordLogin.text.toString().length<3){
-            Toast.makeText(this,"Escribe una contraseña válida", Toast.LENGTH_SHORT).show()
-
-            return false;
-        }
-        return true
-    }
 }
